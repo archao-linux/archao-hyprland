@@ -18,7 +18,7 @@ if [[ "$status" == "Discharging" ]]; then
     # Critical battery alert (highest priority)
     if [[ "$battery_level" -le 5 ]]; then
         if [[ ! -f "$critical_alert_file" ]]; then
-            dunstify -u critical "Battery Critical" " Battery is at ${battery_level}%! System may shut down soon!"
+            dunstify -u critical "Battery Critical" " Battery is at ${battery_level}%! System may shut down soon!"
             touch "$critical_alert_file"
             # Also mark low alert as shown since we're showing critical instead
             touch "$low_alert_file"
@@ -26,7 +26,7 @@ if [[ "$status" == "Discharging" ]]; then
     # Low battery alert (only if not in critical state)
     elif [[ "$battery_level" -le 10 ]]; then
         if [[ ! -f "$low_alert_file" ]]; then
-            dunstify -u critical "Battery Low" " Battery is at ${battery_level}%! Plug in your charger."
+            dunstify -u critical "Battery Low" " Battery is at ${battery_level}%! Plug in your charger."
             touch "$low_alert_file"
         fi
     # Battery above thresholds, reset alert states
